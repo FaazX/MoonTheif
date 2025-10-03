@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Moon Thief - Cosmic Exoplanet Discovery Platform Design System
+All colors MUST be HSL. Space-themed with warm beige accents.
+*/
+
+@layer base {
+  :root {
+    /* Cosmic Deep Space Theme */
+    --background: 240 8% 4%;
+    --foreground: 45 20% 85%;
+
+    --card: 240 6% 8%;
+    --card-foreground: 45 15% 82%;
+
+    --popover: 240 8% 6%;
+    --popover-foreground: 45 20% 85%;
+
+    /* Moon Thief Brand Colors - Warm Beige/Cream */
+    --primary: 45 35% 75%;
+    --primary-foreground: 240 8% 4%;
+
+    --secondary: 240 6% 12%;
+    --secondary-foreground: 45 25% 80%;
+
+    --muted: 240 5% 10%;
+    --muted-foreground: 45 12% 65%;
+
+    /* Cosmic Accent - Golden/Amber */
+    --accent: 38 85% 65%;
+    --accent-foreground: 240 8% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 20% 85%;
+
+    --border: 240 6% 15%;
+    --input: 240 6% 12%;
+    --ring: 45 35% 75%;
+
+    --radius: 0.75rem;
+
+    /* Cosmic Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(240 8% 4%), hsl(240 6% 8%));
+    --gradient-stellar: linear-gradient(45deg, hsl(45 35% 75%), hsl(38 85% 65%));
+    --gradient-nebula: radial-gradient(ellipse at center, hsl(240 6% 8%), hsl(240 8% 4%));
+    
+    /* Glows and Effects */
+    --glow-primary: 0 0 30px hsl(45 35% 75% / 0.3);
+    --glow-accent: 0 0 25px hsl(38 85% 65% / 0.4);
+    --shadow-cosmic: 0 8px 32px hsl(240 8% 4% / 0.6);
+    
+    /* Animations */
+    --transition-cosmic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --orbit-duration: 20s;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode not implemented - cosmic theme only */
+  .light {
+    /* Same as root - maintains cosmic theme */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-cosmic);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Cosmic Animations */
+  @keyframes orbit {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes shimmer {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: var(--glow-primary);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: var(--glow-accent);
+      transform: scale(1.02);
+    }
+  }
+
+  /* Utility Classes */
+  .cosmic-gradient {
+    background: var(--gradient-cosmic);
+  }
+  
+  .stellar-gradient {
+    background: var(--gradient-stellar);
+  }
+  
+  .nebula-gradient {
+    background: var(--gradient-nebula);
+  }
+  
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+  
+  .animate-orbit {
+    animation: orbit var(--orbit-duration) linear infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+}
